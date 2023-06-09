@@ -1,11 +1,17 @@
-import { QueryClient, useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
 import { useGlobalContext } from "../context"
 
+/* URL gets API key from ENV variable */
 const url = `https://api.unsplash.com/search/photos?client_id=${import.meta.env.VITE_API_KEY}`
-console.log(import.meta.env.VITE_API_KEY);
+
 const Gallery = () => {
   const {searchTerm} = useGlobalContext()
+
+  /* 
+   * By passing the second argument, we are telling ReactQuery to 
+   * update the search according to the searchTerm 
+   */
   const response = useQuery({
     queryKey: ['images', searchTerm],
     queryFn: async () => {
