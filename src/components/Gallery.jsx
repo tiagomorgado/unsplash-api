@@ -48,6 +48,7 @@ const Gallery = () => {
   return (
     <section className='image-container'>
       {
+        /* Using conditional to check if fields exist in API call */
         results.map((item) => {
           const url= item?.urls?.regular
           return(
